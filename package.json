@@ -1,0 +1,23 @@
+{
+  "name": "p6_massey_melanie",
+  "version": "1.0.0",
+  "description": "Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^8.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Naniiiiiie/P6_massey_melanie.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Naniiiiiie/P6_massey_melanie/issues"
+  },
+  "homepage": "https://github.com/Naniiiiiie/P6_massey_melanie#readme"
+}
