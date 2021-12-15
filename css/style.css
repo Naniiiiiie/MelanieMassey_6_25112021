@@ -47,28 +47,27 @@ h1 {
     margin-bottom: 0.1rem;
 }
 
-.photographer_section article h3 {
-    color: #901C1C;
-    font-size: 1rem;
+.photographer_section article h3, 
+.photographer_section article h4, 
+.photographer_section article p {
     font-weight: 100;
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
+}
+
+.photographer_section article h3 {
+    color: #901C1C;
+    font-size: 1rem;
 }
 
 .photographer_section article h4 {
     color: #000;
     font-size: 0.8rem;
-    font-weight: 100;
-    margin-top: 0.2rem;
-    margin-bottom: 0.2rem;
 }
 
-.photographer_section article h5 {
+.photographer_section article p {
     color: #757575;
     font-size: 0.8rem;
-    font-weight: 100;
-    margin-top: 0.2rem;
-    margin-bottom: 0.2rem;
 }
 
 .photographer_section article img {
