@@ -1,5 +1,5 @@
 class Photographer {
-    constructor(data) {
+    constructor(data,index) {
         this.name = data.name
         this.id = data.id
         this.city = data.city
@@ -7,12 +7,16 @@ class Photographer {
         this.tagline = data.tagline
         this.price = data.price
         this.portrait = data.portrait
+        this.index = index
     }
     getUserCardDOM() {
         const article = document.createElement('article');
+        article.addEventListener('click', () => {
+            window.location.href = `photographer.html?index=${this.index}`;
+        })
         const picture = `assets/photographers/${this.portrait}`;
         const img = document.createElement('img');
-        img.setAttribute("src", picture)
+        img.setAttribute("src", picture);
         const h2 = document.createElement('h2');
         h2.textContent = this.name;
         const h3 = document.createElement('h3');
@@ -29,3 +33,4 @@ class Photographer {
         return article;
     }
 }
+

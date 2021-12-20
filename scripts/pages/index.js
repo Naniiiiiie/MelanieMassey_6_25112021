@@ -1,5 +1,4 @@
     async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
         const resultat = await fetch ("data/photographers.json")
         const photographers = await resultat.json()
         return photographers
@@ -7,11 +6,13 @@
 
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
+        i = 0;
 
         photographers.forEach((photographer) => {
-            const photographerModel = new Photographer(photographer);
+            const photographerModel = new Photographer(photographer,i); //je passe un deuxième paramètre i
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
+            i++;
         });
     };
 
