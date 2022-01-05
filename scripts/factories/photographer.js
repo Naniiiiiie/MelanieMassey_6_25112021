@@ -1,4 +1,5 @@
 class Photographer {
+    // Mise en place du constructor
     constructor(data,index) {
         this.name = data.name
         this.id = data.id
@@ -9,11 +10,18 @@ class Photographer {
         this.portrait = data.portrait
         this.index = index
     }
+
+    // Fonction qui va créer le profil de chaque photographe
     getUserCardDOM() {
+        // Création d'un nouvel élément article dans la page
         const article = document.createElement('article');
+        
+        // J'écoute l'évènement click de l'élément article créé pour rediriger vers sa page individuelle
         article.addEventListener('click', () => {
             window.location.href = `photographer.html?index=${this.index}`;
         })
+
+        // Création de chaque élément qui récupère les données de  chaque photographe
         const picture = `assets/photographers/${this.portrait}`;
         const img = document.createElement('img');
         img.setAttribute("src", picture);
