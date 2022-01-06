@@ -7,11 +7,14 @@ class Videos {
         this.date = data.date
         this.price = data.price
     }
-    getVideos() {
+    getMediaCardDOM() {
         const article = document.createElement('article');
 
-        const video = `assets/photographers/${this.video}`;
-        const // Ajouter code video
+        const videoFile = `assets/photographers/${this.video}`;
+        const video = document.createElement('video');
+        const sourceVideo = document.createElement('source');
+        sourceVideo.setAttribute("src",videoFile);
+        sourceVideo.setAttribute("type","video/mp4");
         const span = document.createElement('span');
         span.textContent = this.likes;
         const icon = document.createElement('i');
@@ -20,5 +23,8 @@ class Videos {
         // article.appendChild Video
         article.appendChild(span);
         article.appendChild(icon);
+        article.appendChild(video);
+        video.appendChild(sourceVideo);
+        return article;
     }
 }

@@ -8,7 +8,7 @@ class Images {
         this.date = data.date
         this.price = data.price
     }
-    getImages() {
+    getMediaCardDOM() {
         const article = document.createElement('article');
 
         const picture = `assets/photographers/${this.image}`;
@@ -25,5 +25,6 @@ class Images {
         article.appendChild(h3);
         article.appendChild(span);
         article.appendChild(icon);
+        return article;
     }
 }

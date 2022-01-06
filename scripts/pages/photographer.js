@@ -1,3 +1,4 @@
+// Récupération des données des photographes du json et conversion pour les rendre exploitables
 async function getPhotographer(index) {
     const resultat = await fetch ("data/photographers.json")
     const photographers = await resultat.json()
@@ -5,23 +6,32 @@ async function getPhotographer(index) {
     return photographer
 }
 
+// Récupération des données médias du json et conversion pour les rendre exploitables
 async function getMedias(photographer) {
-    console.log(photographer)
     const resultatMedias = await fetch ("data/photographers.json")
     let medias = await resultatMedias.json()
     medias = medias.media
 
-    // Balayge du tableau à la recherche des medias souhaités
+    // Balayge de chaque media du tableau à la recherche des medias souhaités
     medias.forEach(media => {
-        if (media.photographerId == photographer) {
-        
-        }
+        // Si le photographerId de chaque media = à l'Id du photographe
+        if (media.photographerId == photographer.id) {
+            // Alors on affiche le media sur la page dans la section .photograph-medias
+            const photographerMedias = document.querySelector(".photograph-medias");
+            // Récupération de chaque media en le faisant passer dans la MediasFactory
+            // La Factory va définir s'il s'agit d'une image ou vidéo
+            const photographerMedia = new MediasFactory(media);
+            // Mise en forme de chaque média dans le DOM
+            const mediaCardDOM = photographerMedia.getMediaCardDOM();
+            photographerMedias.appendChild(mediaCardDOM);
+        } 
     });
 }
 
+// Création de l'encard donnée du photographe .photograph-header
 async function init(photographerId){
     const photographer = await getPhotographer(photographerId);
-    const medias = await getMedias(photographer.id);
+    const medias = await getMedias(photographer);
     
     /**insérer infos photographe**/
     //Création d'un <div> avant <button> de contact pour Nom, City, Tagline
@@ -48,9 +58,6 @@ async function init(photographerId){
     const img = document.createElement('img');
     img.setAttribute("src", picture);
     photographHeader.appendChild(img);
-
-    /*Insérer Médias*/
-
 }
 
 const photographerId = new URLSearchParams(window.location.search).get("index");
