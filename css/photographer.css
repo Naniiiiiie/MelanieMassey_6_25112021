@@ -2,19 +2,46 @@
     display: none;
 }
 
+/*PHOTOGRAPHER HEADER with his info*/
 .photograph-header {
     background-color: #FAFAFA;
     height: auto;
-    margin: 0 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px;
+    padding: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+h3,
+.photograph-header div h4 {
+    font-weight: 100;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.photograph-header div h2 {
+    color: #D3573C;
+    font-size: 3rem;
+    font-weight: 100;
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
+}
+
+h3 {
+    color: #901C1C;
+    font-size: 1.5rem;
+}
+
+.photograph-header div h4 {
+    color: #000;
+    font-size: 1rem;
 }
 
 .photograph-header > img {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -32,6 +59,47 @@
     cursor: pointer;
 }
 
+/*MEDIAS SECTION*/
+.photograph-medias {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+}
+
+.photograph-medias article img,
+.photograph-medias article video {
+    width: 100%;
+    height: 450px;
+    border-radius: 5px;
+    object-fit: cover;
+    
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mediaDiv {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fa-heart {
+    color: #901C1C;
+}
+
+.likesDiv span {
+    color: #901C1C;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+/*MODAL Contact form*/
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
