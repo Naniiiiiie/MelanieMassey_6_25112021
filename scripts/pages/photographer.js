@@ -36,7 +36,7 @@ async function init(photographerId){
     /**insérer infos photographe**/
     //Création d'un <div> avant <button> de contact pour Nom, City, Tagline
     const photographHeader = document.querySelector(".photograph-header");
-    const contactButton = document.querySelector(".contact_button");
+    const contactButton = document.querySelector("#contact_button");
     const photographerHeaderDiv = document.createElement('div');
     photographHeader.insertBefore(photographerHeaderDiv, contactButton);
 
@@ -51,15 +51,22 @@ async function init(photographerId){
     photographerHeaderDiv.appendChild(h3);
     photographerHeaderDiv.appendChild(h4);
 
-    console.log(photographerHeaderDiv)
-
     //Création d'une <img> après <button> de contact
     const picture = `assets/photographers/${photographer.portrait}`;
     const img = document.createElement('img');
     img.setAttribute("src", picture);
     photographHeader.appendChild(img);
+
+/*
+    //Insertion nom photographe dans modal
+    const modalForm = document.getElementById("modal_form");
+    const modal = document.getElementById("modal");
+    const modalPhotographerName = modal.insertBefore(h2, modalForm);
+    modalPhotographerName.id = 'modal__Photographer--name';
+*/
 }
 
 const photographerId = new URLSearchParams(window.location.search).get("index");
 
 init(photographerId);
+

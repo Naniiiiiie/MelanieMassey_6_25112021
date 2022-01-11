@@ -9,29 +9,37 @@
     <script src="https://kit.fontawesome.com/538a48f33d.js" crossorigin="anonymous"></script>
   </head>
   <body>
+    <!--HEADER-->
     <header>
       <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
     </header>
+    <!--MAIN CONTENT-->
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button id="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
       <section class="photograph-medias">
-
       </section>
     </main>
+    <!--MODAL-->
     <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+			<div id="modal">
+				<header id="modal_header">
+          <h2 id="modal_title">Contactez-moi</h2>
+          <img id="close_button" src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
+				<form id="modal_form">
 					<div>
 						<label>Prénom</label>
-						<input />
+						<input type="text"/>
+            <label>Nom</label>
+						<input type="text"/>
+            <label>Email</label>
+						<input type="email"/>
+            <label>Votre message</label>
+						<input type="text"/>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button id="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
