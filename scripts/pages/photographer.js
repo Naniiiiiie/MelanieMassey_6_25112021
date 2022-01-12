@@ -57,16 +57,13 @@ async function init(photographerId){
     img.setAttribute("src", picture);
     photographHeader.appendChild(img);
 
-/*
     //Insertion nom photographe dans modal
-    const modalForm = document.getElementById("modal_form");
-    const modal = document.getElementById("modal");
-    const modalPhotographerName = modal.insertBefore(h2, modalForm);
-    modalPhotographerName.id = 'modal__Photographer--name';
-*/
+    document.getElementById("modal_title").innerHTML = document.getElementById("modal_title").innerHTML + "<br/>" + photographer.name;
 }
 
 const photographerId = new URLSearchParams(window.location.search).get("index");
 
 init(photographerId);
+
+
 
