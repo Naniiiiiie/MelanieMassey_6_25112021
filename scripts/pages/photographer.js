@@ -41,13 +41,12 @@ async function getMedias(photographer) {
     const spanLikes = document.createElement('span');
     const pLikes = document.createElement('p');
     pLikes.textContent = totalMediasLikes;
+    pLikes.id = "totalLikes";
     const icon = document.createElement('i');
     icon.className = 'fas fa-heart tag-heart';
     tagLikesPrice.appendChild(spanLikes);
     spanLikes.appendChild(pLikes);
     spanLikes.appendChild(icon);
-
-
 }
 
 // Création de l'encard donnée du photographe .photograph-header
@@ -84,14 +83,9 @@ async function init(photographerId){
 
     //Mise en forme du tag en bas à droite avec nb likes total et tarif
     const tagLikesPrice = document.querySelector("#tag_LikesPrice");
-
-    
     const pPrice = document.createElement('p');
     pPrice.textContent = photographer.price + '€ / jour';
-
-    
-    tagLikesPrice.appendChild(pPrice);
-    
+    tagLikesPrice.appendChild(pPrice);   
 }
 
 const photographerId = new URLSearchParams(window.location.search).get("index");
@@ -129,7 +123,7 @@ function totalLikes() {
     // Mise à jour du texte des totals de Likes dans le tag
     pLikes.innerText = likesTotalValue;
 }
-*/
+
 
 totalLikes();
-
+*/

@@ -37,9 +37,11 @@ class Images {
         likesDiv.appendChild(span);
         likesDiv.appendChild(icon);
 
-        // Incrémentation du like mais infini
+        // Incrémentation du like dans la fiche Media mais aussi dans le total des likes
         icon.addEventListener("click", addOneLike);
         function addOneLike() {
+            let totalLikes = document.getElementById("totalLikes").innerHTML++;
+            console.log(totalLikes);
             span.textContent++;
             return span;
         }
