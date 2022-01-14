@@ -33,6 +33,7 @@ class Videos {
         likesDiv.className= 'likesDiv';
         mediaDiv.appendChild(likesDiv);
         const span = document.createElement('span');
+        span.className = "mediaLikes";
         span.textContent = this.likes;
         const icon = document.createElement('i');
         icon.className = 'fas fa-heart';// code icone

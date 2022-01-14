@@ -95,6 +95,35 @@ article {
     margin-right: 0.5rem;
 }
 
+/*TAG Likes & tarif*/
+#tag_LikesPrice {
+    width: 376px;
+    height: 70px;
+    background-color: #DB8876;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    margin-right: 3rem;
+    padding: 5px 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#tag_LikesPrice span {
+    display: flex;
+    align-items: center;
+}
+
+.tag-heart{
+    color: black;
+}
+
 /*MODAL Contact form*/
 #contact_modal {
     display: none;
@@ -103,7 +132,7 @@ article {
     left: 0;
     top: 0;
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 50px ;
     height: 100%;
     width: 100%;
     overflow: auto;

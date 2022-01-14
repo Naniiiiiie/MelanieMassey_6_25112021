@@ -30,12 +30,20 @@ class Images {
         likesDiv.className= 'likesDiv';
         mediaDiv.appendChild(likesDiv);
         const span = document.createElement('span');
+        span.className = "mediaLikes";
         span.textContent = this.likes;
         const icon = document.createElement('i');
         icon.className = 'fas fa-heart';// code icone
         likesDiv.appendChild(span);
         likesDiv.appendChild(icon);
 
+        // Incrémentation du like mais infini
+        icon.addEventListener("click", addOneLike);
+        function addOneLike() {
+            span.textContent++;
+            return span;
+        }
+        
         return article;
     }
 }
