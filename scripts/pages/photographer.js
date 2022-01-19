@@ -11,24 +11,34 @@ async function getMedias(photographer) {
     const resultatMedias = await fetch ("data/photographers.json")
     let medias = await resultatMedias.json()
     medias = medias.media
+    console.log(medias);
 
+    // Tableau qui va répertorier les likes de chaque medias d'un photographe
     let likesArray = []
+
+    // Tableau qui va répertorier tous les medias d'un photographe
+    let photographerMedias = []
+    
 
     // Balayge de chaque media du tableau à la recherche des medias souhaités
     medias.forEach(media => {
         // Si le photographerId de chaque media = à l'Id du photographe
         if (media.photographerId == photographer.id) {
             // Alors on affiche le media sur la page dans la section .photograph-medias
-            const photographerMedias = document.querySelector(".photograph-medias");
+            const photographerMediasSection = document.querySelector(".photograph-medias");
             // Récupération de chaque media en le faisant passer dans la MediasFactory
             // La Factory va définir s'il s'agit d'une image ou vidéo
             const photographerMedia = new MediasFactory(media);
             // Mise en forme de chaque média dans le DOM
             const mediaCardDOM = photographerMedia.getMediaCardDOM();
-            photographerMedias.appendChild(mediaCardDOM);
+            photographerMediasSection.appendChild(mediaCardDOM);
             
             // Ajoute nb likes de chaque media dans tableau likesArray
             likesArray.push(media.likes);
+
+            // Ajoute chaque media dans le tableau photographerMedias
+            photographerMedias.push(media);
+            console.log(photographerMedias);
         } 
     });
     
@@ -47,6 +57,11 @@ async function getMedias(photographer) {
     tagLikesPrice.appendChild(spanLikes);
     spanLikes.appendChild(pLikes);
     spanLikes.appendChild(icon);
+
+    /*// Tri par popularité = nb de likes
+    photographerMedias.sort(function (a, b) {
+        return a.likes - b.likes;
+    })*/
 }
 
 // Création de l'encard donnée du photographe .photograph-header

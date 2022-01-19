@@ -1,4 +1,4 @@
-/*PHOTOGRAPHER HEADER with his info*/
+/***PHOTOGRAPHER HEADER with his info***/
 .photograph-header {
     background-color: #FAFAFA;
     height: auto;
@@ -55,7 +55,7 @@ h3 {
     cursor: pointer;
 }
 
-/*MEDIAS SECTION*/
+/***MEDIAS SECTION***/
 .photograph-medias {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -63,6 +63,62 @@ h3 {
     margin-top: 100px;
 }
 
+/*Barre des filtres*/
+#filter_container {
+    grid-column: 1/4;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#filter_container p {
+    font-weight: bold;
+}
+
+#filter_elements {
+    width: 170px;
+    height: auto;
+    color: #ffffff;
+    background-color:#901C1C;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px gray;
+    position: relative;
+}
+
+#up {
+    display: none;
+}
+
+.fa-chevron-down,
+.fa-chevron-up {
+    color: #ffffff;
+    position: absolute;
+    top: 1.2rem;
+    right: 1.4rem;
+}
+
+#filter_elements p {
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin: 0;
+}
+
+#filter_elements p:nth-child(0n+4) {
+    border-top: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
+
+#filter_date,
+#filter_titre {
+    display: none;
+}
+
+/*Medias*/
 .photograph-medias article img,
 .photograph-medias article video {
     width: 100%;
