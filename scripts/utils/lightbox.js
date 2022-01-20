@@ -1,18 +1,22 @@
 class Lightbox {
 
-    static init() {
+    static init(medias) {
         // Constante qui regroupe tous les liens amenant vers des jpg et mp4
-        const links = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
+        const links = document.querySelectorAll(".mediaLink");
+        console.log(links);
         // Pour chaque media cliqué, j'annule le lien existant et créé une lightbox associée au media
-        links.forEach(link => link.addEventListener('click', e => {
-            // stop comportement par défaut du lien
-            e.preventDefault()
-            // Affiche une Lightbox
-            new Lightbox(e.currentTarget.getAttribute('href'))
-        }))
+        links.forEach(link => {
+            link.addEventListener('click', e => {
+                // stop comportement par défaut du lien
+                e.preventDefault()
+                // Affiche une Lightbox
+                new Lightbox(e.currentTarget.getAttribute('href'),medias)
+            })
+        })
     }
 
-    constructor (url) {
+    constructor (url,medias) {
+        this.medias = medias
         const lightboxElement = this.buildDOM(url)
         document.body.appendChild(lightboxElement)
     }
@@ -43,4 +47,5 @@ class Lightbox {
     </div>
  */
 
-Lightbox.init();
+
+

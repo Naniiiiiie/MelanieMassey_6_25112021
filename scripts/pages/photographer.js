@@ -18,13 +18,14 @@ async function getMedias(photographer) {
     // Tableau qui va répertorier tous les medias d'un photographe
     let photographerMedias = []
     
+    const photographerMediasSection = document.querySelector(".photograph-medias");
 
     // Balayge de chaque media du tableau à la recherche des medias souhaités
     medias.forEach(media => {
         // Si le photographerId de chaque media = à l'Id du photographe
         if (media.photographerId == photographer.id) {
             // Alors on affiche le media sur la page dans la section .photograph-medias
-            const photographerMediasSection = document.querySelector(".photograph-medias");
+            
             // Récupération de chaque media en le faisant passer dans la MediasFactory
             // La Factory va définir s'il s'agit d'une image ou vidéo
             const photographerMedia = new MediasFactory(media);
@@ -41,6 +42,8 @@ async function getMedias(photographer) {
         } 
     });
     
+    Lightbox.init(photographerMedias);
+
     // Function pour additionner valeurs des Likes du tableau likesArray
     const addition = (previousValue, currentValue) => previousValue + currentValue;
     let totalMediasLikes = likesArray.reduce(addition);
@@ -57,17 +60,34 @@ async function getMedias(photographer) {
     spanLikes.appendChild(pLikes);
     spanLikes.appendChild(icon);
 
-    /*
-    // Tri par popularité = nb de likes
-    photographerMedias.sort(function (a, b) {
-        return b.likes - a.likes;
+    const filters = document.querySelectorAll("#filter_elements p");
+    console.log(filters);
+    filters.forEach(filter => {
+        filter.addEventListener("click", e => {
+            console.log("hello");
+            switch(e.target.id) {
+                case "filter_pop":
+                    photographerMedias.sort(function (a, b) {
+                        return b.likes - a.likes;
+                    }) 
+                break
+
+                case "filter_titre":
+                    photographerMedias.sort(function (a, b) {
+                        return a.title - b.title;
+                    })
+                break
+            }
+            
+            photographerMediasSection.innerHTML = "";
+            photographerMedias.forEach(media => {
+                const photographerMedia = new MediasFactory(media);
+                const mediaCardDOM = photographerMedia.getMediaCardDOM();
+                photographerMediasSection.appendChild(mediaCardDOM);
+            })
+  
+        })
     })
-    
-    // Trip par titre
-    photographerMedias.sort(function (a, b) {
-        return a.title - b.title;
-    })
-    */
 }
 
 // Création de l'encard donnée du photographe .photograph-header

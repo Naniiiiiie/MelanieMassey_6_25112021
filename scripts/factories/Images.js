@@ -15,6 +15,7 @@ class Images {
         const picture = `assets/photographers/${this.image}`;
         const linkMedia = document.createElement('a');
         linkMedia.setAttribute("href", picture);
+        linkMedia.classList.add("mediaLink");
         article.appendChild(linkMedia);
 
         // Création élément image
