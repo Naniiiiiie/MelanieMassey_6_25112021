@@ -11,7 +11,6 @@ async function getMedias(photographer) {
     const resultatMedias = await fetch ("data/photographers.json")
     let medias = await resultatMedias.json()
     medias = medias.media
-    console.log(medias);
 
     // Tableau qui va répertorier les likes de chaque medias d'un photographe
     let likesArray = []
@@ -58,10 +57,17 @@ async function getMedias(photographer) {
     spanLikes.appendChild(pLikes);
     spanLikes.appendChild(icon);
 
-    /*// Tri par popularité = nb de likes
+    /*
+    // Tri par popularité = nb de likes
     photographerMedias.sort(function (a, b) {
-        return a.likes - b.likes;
-    })*/
+        return b.likes - a.likes;
+    })
+    
+    // Trip par titre
+    photographerMedias.sort(function (a, b) {
+        return a.title - b.title;
+    })
+    */
 }
 
 // Création de l'encard donnée du photographe .photograph-header

@@ -11,11 +11,16 @@ class Images {
     getMediaCardDOM() {
         const article = document.createElement('article');
         
-        // Création élément image
+        // Création d'un lien vers image
         const picture = `assets/photographers/${this.image}`;
+        const linkMedia = document.createElement('a');
+        linkMedia.setAttribute("href", picture);
+        article.appendChild(linkMedia);
+
+        // Création élément image
         const img = document.createElement('img');
         img.setAttribute("src", picture);
-        article.appendChild(img);
+        linkMedia.appendChild(img);
 
         // Création d'un div enfant de l'élément article pour insérer le titre & likes du média
         const mediaDiv = document.createElement('div');

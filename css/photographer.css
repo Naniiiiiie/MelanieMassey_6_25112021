@@ -119,19 +119,24 @@ h3 {
 }
 
 /*Medias*/
-.photograph-medias article img,
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+article a {
+    display: flex;
+    width: 100%;
+}
+
+.photograph-medias article a img,
 .photograph-medias article video {
     width: 100%;
     height: 350px;
     border-radius: 5px;
     object-fit: cover;
     
-}
-
-article {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .mediaDiv {
