@@ -272,7 +272,11 @@ form input {
     background-color: #ffffff;
     z-index: 1;
     padding: 25px 50px;
-    
+    transition: opacity 300ms;
+}
+
+.lightbox_closing {
+    opacity: 0;
 }
 
 #lightbox_prev,
@@ -281,14 +285,12 @@ form input {
     background: url(/assets/icons/chevron.svg) center center / 100% 100%;
     width: 48px;
     height: 100%;
-    
     z-index: 2;
     text-indent: -10000px;
     cursor: pointer;
 }
 
 #lightbox_next {
-    
     transform: rotate(180deg);
 }
 
@@ -298,9 +300,11 @@ form input {
     width: 42px;
     height: 42px;
     position: fixed;
-    top: 30px;
-    right: 50px;
+    top: 20px;
+    right: 25px;
     text-indent: -10000px;
+    z-index: 100;
+    cursor: pointer;
 }
 
 #lightbox_media {

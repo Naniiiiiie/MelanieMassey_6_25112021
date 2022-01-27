@@ -11,13 +11,19 @@ class Videos {
     getMediaCardDOM() {
         const article = document.createElement('article');
 
-        // Création élément video
+        // Création d'un lien vers video
         const videoFile = `assets/photographers/${this.video}`;
+        const linkMedia = document.createElement('a');
+        linkMedia.setAttribute("href", videoFile);
+        linkMedia.classList.add("mediaLink");
+        article.appendChild(linkMedia);
+
+        // Création élément video
         const video = document.createElement('video');
         const sourceVideo = document.createElement('source');
         sourceVideo.setAttribute("src",videoFile);
         sourceVideo.setAttribute("type","video/mp4");
-        article.appendChild(video);
+        linkMedia.appendChild(video);
         video.appendChild(sourceVideo);
         
         // Création d'un div enfant de l'élément article pour insérer le titre & likes du média

@@ -38,7 +38,6 @@ async function getMedias(photographer) {
 
             // Ajoute chaque media dans le tableau photographerMedias
             photographerMedias.push(media);
-            console.log(photographerMedias);
         } 
     });
     
@@ -61,10 +60,8 @@ async function getMedias(photographer) {
     spanLikes.appendChild(icon);
 
     const filters = document.querySelectorAll("#filter_elements p");
-    console.log(filters);
     filters.forEach(filter => {
         filter.addEventListener("click", e => {
-            console.log("hello");
             switch(e.target.id) {
                 case "filter_pop":
                     photographerMedias.sort(function (a, b) {
