@@ -18,7 +18,7 @@ async function getMedias(photographer) {
     // Tableau qui va répertorier tous les medias d'un photographe
     let photographerMedias = []
     
-    const photographerMediasSection = document.querySelector(".photograph-medias");
+    const photographerMediasSection = document.querySelector(".medias-display");
 
     // Balayge de chaque media du tableau à la recherche des medias souhaités
     medias.forEach(media => {
@@ -59,6 +59,7 @@ async function getMedias(photographer) {
     spanLikes.appendChild(pLikes);
     spanLikes.appendChild(icon);
 
+    // Filtrage des Medias
     const filters = document.querySelectorAll("#filter_elements p");
     filters.forEach(filter => {
         filter.addEventListener("click", e => {
@@ -72,6 +73,12 @@ async function getMedias(photographer) {
                 case "filter_titre":
                     photographerMedias.sort(function (a, b) {
                         return a.title - b.title;
+                    })
+                break
+
+                case "filter_date":
+                    photographerMedias.sort(function (a, b) {
+                        return b.date - a.date;
                     })
                 break
             }

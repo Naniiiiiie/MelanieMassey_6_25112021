@@ -1,6 +1,7 @@
 class Lightbox {
 
     static init(medias) {
+        console.log(medias)
         // Constante qui regroupe tous les liens amenant vers des jpg et mp4
         const links = document.querySelectorAll(".mediaLink");
         // Pour chaque media cliqué, j'annule le lien existant et créé une lightbox associée au media
@@ -14,14 +15,20 @@ class Lightbox {
         })
     }
 
-    constructor (url,medias) {
+    constructor (url, medias) {
         this.medias = medias
         const lightboxElement = this.buildDOM(url)
         document.body.appendChild(lightboxElement)
+        
     }
 
+    // Passe au media suivant
+    next() {
+        console.log(medias)
+    }
+    
     // Construit la lightbox
-    buildDOM (url) {
+    buildDOM (url, medias) {
         const dom = document.createElement('div')
         dom.id = "lightbox_container"
         dom.innerHTML = `<button id="lightbox_close">Fermer</button>
@@ -39,11 +46,15 @@ class Lightbox {
         const closeButton = dom.querySelector("#lightbox_close")
         closeButton.addEventListener("click", close)
         
+        
+        
         /*
         // Passe au media suivant
         function next() {
-
+            console.log(this.medias)
+            
         }
+        
         const nextButton = dom.querySelector("#lightbox_next")
         nextButton.addEventListener("click", next)
         */
