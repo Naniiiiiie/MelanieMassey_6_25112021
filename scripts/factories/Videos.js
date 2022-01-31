@@ -7,6 +7,7 @@ class Videos {
         this.likes = data.likes
         this.date = data.date
         this.price = data.price
+        this.index = data.index
     }
     getMediaCardDOM() {
         const article = document.createElement('article');
@@ -16,6 +17,7 @@ class Videos {
         const linkMedia = document.createElement('a');
         linkMedia.setAttribute("href", videoFile);
         linkMedia.classList.add("mediaLink");
+        linkMedia.dataset.index = this.index;
         article.appendChild(linkMedia);
 
         // Création élément video
@@ -56,5 +58,15 @@ class Videos {
         }
         
         return article;
+    }
+    
+    getMediaLightboxDOM() {
+        const mediaLightboxDiv = document.createElement('div')
+        mediaLightboxDiv.id = "lightbox_media"
+        mediaLightboxDiv.innerHTML = `<video>
+                    <source src="assets/photographers/${this.video}" type="video/mp4" alt="${this.title}">
+                </video>
+                <h3>${this.title}</h3>`
+        return mediaLightboxDiv
     }
 }

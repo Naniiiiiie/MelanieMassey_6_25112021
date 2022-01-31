@@ -1,7 +1,6 @@
 class Lightbox {
 
     static init(medias) {
-        console.log(medias)
         // Constante qui regroupe tous les liens amenant vers des jpg et mp4
         const links = document.querySelectorAll(".mediaLink");
         // Pour chaque media cliqué, j'annule le lien existant et créé une lightbox associée au media
@@ -10,34 +9,31 @@ class Lightbox {
                 // stop comportement par défaut du lien
                 e.preventDefault()
                 // Affiche une Lightbox
-                new Lightbox(e.currentTarget.getAttribute('href'),medias)
+                new Lightbox(medias[e.currentTarget.dataset.index],medias)
             })
         })
     }
 
-    constructor (url, medias) {
+    constructor (media, medias) {
         this.medias = medias
-        const lightboxElement = this.buildDOM(url)
+        this.index = media.index
+        const lightboxElement = this.buildDOM(media)
         document.body.appendChild(lightboxElement)
-        
-    }
-
-    // Passe au media suivant
-    next() {
-        console.log(medias)
     }
     
     // Construit la lightbox
-    buildDOM (url, medias) {
+    buildDOM (media) {
         const dom = document.createElement('div')
+        const photographerMedia = new MediasFactory(media)
+        const mediaLightboxDOM = photographerMedia.getMediaLightboxDOM()
+        console.log(mediaLightboxDOM)
+
         dom.id = "lightbox_container"
-        dom.innerHTML = `<button id="lightbox_close">Fermer</button>
-            <button id="lightbox_prev">Précédent</button>
-            <div id="lightbox_media">
-                <img src="${url}" alt="">
-                <h3>Titre du media</h3>
-            </div>
-            <button id="lightbox_next">Suivant</button>`
+        dom.innerHTML = `<button id="lightbox_prev">Précédent</button>`
+        dom.appendChild(mediaLightboxDOM)
+        dom.insertAdjacentHTML('beforeend', '<button id="lightbox_next">Suivant</button><button id="lightbox_close">Fermer</button>')
+        
+        
         
         // Ferme la lightbox au clic sur la croix de fermeture
         function close() {
@@ -51,7 +47,8 @@ class Lightbox {
         /*
         // Passe au media suivant
         function next() {
-            console.log(this.medias)
+            let i = [];
+
             
         }
         

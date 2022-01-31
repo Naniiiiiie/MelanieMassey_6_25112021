@@ -266,7 +266,7 @@ form input {
     top: 0;
     left: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 95%; /*pourquoi quand je mets 100% ça dépace du desktop?*/
     height: 100vh;
     background-color: #ffffff;
@@ -299,9 +299,9 @@ form input {
     background: url(/assets/icons/close_lightbox.svg) center center / 42px 42px;
     width: 42px;
     height: 42px;
-    position: fixed;
-    top: 20px;
-    right: 25px;
+    position: relative;
+    top: 0px;
+    right: 42px;
     text-indent: -10000px;
     z-index: 100;
     cursor: pointer;
@@ -311,14 +311,14 @@ form input {
     display: flex;
     flex-direction: column;
     align-content: center;
-    width: 100%;
+    
     height: 100%;
     padding: 0 25px;
 }
 
-#lightbox_media img{
-    width: 100%;
+#lightbox_media img,
+#lightbox_media video{
+    width: auto;
     height: 90vh;
-    object-fit: cover;
     box-shadow: 5px 0px 1px grey;
 }

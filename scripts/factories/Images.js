@@ -7,6 +7,7 @@ class Images {
         this.likes = data.likes
         this.date = data.date
         this.price = data.price
+        this.index = data.index
     }
     getMediaCardDOM() {
         const article = document.createElement('article');
@@ -16,6 +17,7 @@ class Images {
         const linkMedia = document.createElement('a');
         linkMedia.setAttribute("href", picture);
         linkMedia.classList.add("mediaLink");
+        linkMedia.dataset.index=this.index;
         article.appendChild(linkMedia);
 
         // Création élément image
@@ -53,5 +55,13 @@ class Images {
         }
         
         return article;
+    }
+
+    getMediaLightboxDOM() {
+        const mediaLightboxDiv = document.createElement('div')
+        mediaLightboxDiv.id = "lightbox_media"
+        mediaLightboxDiv.innerHTML = `<img src="assets/photographers/${this.image}" alt="${this.title}">
+                <h3>${this.title}</h3>`
+        return mediaLightboxDiv
     }
 }

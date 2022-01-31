@@ -21,14 +21,17 @@ async function getMedias(photographer) {
     const photographerMediasSection = document.querySelector(".medias-display");
 
     // Balayge de chaque media du tableau à la recherche des medias souhaités
+    let i = 0;
     medias.forEach(media => {
         // Si le photographerId de chaque media = à l'Id du photographe
         if (media.photographerId == photographer.id) {
             // Alors on affiche le media sur la page dans la section .photograph-medias
             
+            media.index = i;
             // Récupération de chaque media en le faisant passer dans la MediasFactory
             // La Factory va définir s'il s'agit d'une image ou vidéo
             const photographerMedia = new MediasFactory(media);
+            
             // Mise en forme de chaque média dans le DOM
             const mediaCardDOM = photographerMedia.getMediaCardDOM();
             photographerMediasSection.appendChild(mediaCardDOM);
@@ -38,6 +41,7 @@ async function getMedias(photographer) {
 
             // Ajoute chaque media dans le tableau photographerMedias
             photographerMedias.push(media);
+            i++
         } 
     });
     
@@ -67,27 +71,31 @@ async function getMedias(photographer) {
                 case "filter_pop":
                     photographerMedias.sort(function (a, b) {
                         return b.likes - a.likes;
-                    }) 
+                    })
                 break
 
                 case "filter_titre":
                     photographerMedias.sort(function (a, b) {
-                        return a.title - b.title;
+                        return a.title.localeCompare(b.title);
                     })
+                    //users.sort((a, b) => a.firstname.localeCompare(b.firstname))
                 break
 
                 case "filter_date":
                     photographerMedias.sort(function (a, b) {
-                        return b.date - a.date;
+                        return new Date(b.date) - new Date(a.date);
                     })
                 break
             }
             
             photographerMediasSection.innerHTML = "";
+            let i = 0;
             photographerMedias.forEach(media => {
+                media.index = i;
                 const photographerMedia = new MediasFactory(media);
                 const mediaCardDOM = photographerMedia.getMediaCardDOM();
                 photographerMediasSection.appendChild(mediaCardDOM);
+                i++
             })
   
         })
