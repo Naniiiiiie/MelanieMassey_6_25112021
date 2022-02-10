@@ -33,16 +33,16 @@ h1 {
     margin-top: 100px;
 }
 
-.photographer_section article {
+.photographer_section article a{
     justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    cursor: pointer;
+    text-decoration: none;
 }
 
-.photographer_section article h2 {
+.photographer_section article a h2 {
     color: #D3573C;
     font-size: 2rem;
     font-weight: 100;
@@ -50,30 +50,30 @@ h1 {
     margin-bottom: 0.1rem;
 }
 
-.photographer_section article h3, 
-.photographer_section article h4, 
-.photographer_section article p {
+.photographer_section article a h3, 
+.photographer_section article a h4, 
+.photographer_section article a p {
     font-weight: 100;
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
 }
 
-.photographer_section article h3 {
+.photographer_section article a h3 {
     color: #901C1C;
     font-size: 1rem;
 }
 
-.photographer_section article h4 {
+.photographer_section article a h4 {
     color: #000;
     font-size: 0.8rem;
 }
 
-.photographer_section article p {
+.photographer_section article a p {
     color: #757575;
     font-size: 0.8rem;
 }
 
-.photographer_section article img {
+.photographer_section article a img {
     height: 200px;
     width: 200px;
     object-fit: cover;

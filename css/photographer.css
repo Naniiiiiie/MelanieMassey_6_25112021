@@ -10,14 +10,14 @@
     margin-bottom: 40px;
 }
 
-h3,
-.photograph-header div h4 {
+h2,
+.photograph-header div p {
     font-weight: 100;
     margin-top: 0.8rem;
     margin-bottom: 0.8rem;
 }
 
-.photograph-header div h2 {
+.photograph-header div h1 {
     color: #D3573C;
     font-size: 3rem;
     font-weight: 100;
@@ -25,12 +25,12 @@ h3,
     margin-bottom: 0.6rem;
 }
 
-h3 {
+h2 {
     color: #901C1C;
     font-size: 1.5rem;
 }
 
-.photograph-header div h4 {
+.photograph-header div p {
     color: #000;
     font-size: 1rem;
 }

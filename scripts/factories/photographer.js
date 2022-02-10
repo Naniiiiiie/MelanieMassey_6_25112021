@@ -16,15 +16,24 @@ class Photographer {
         // Création d'un nouvel élément article dans la page
         const article = document.createElement('article');
         
-        // J'écoute l'évènement click de l'élément article créé pour rediriger vers sa page individuelle
+        // Création du lien de la future vignette (article) d'un photographe
+        const linkPhotographer = document.createElement('a');
+        console.log(linkPhotographer);
+        const urlPhotographer = `photographer.html?index=${this.index}`;
+        console.log(urlPhotographer);
+        linkPhotographer.setAttribute("href", urlPhotographer);
+        article.appendChild(linkPhotographer);
+        
+        /*// J'écoute l'évènement click de l'élément article créé pour rediriger vers sa page individuelle
         article.addEventListener('click', () => {
-            window.location.href = `photographer.html?index=${this.index}`;
-        })
+            window.location.href = urlPhotographer;
+        })*/
 
         // Création de chaque élément qui récupère les données de  chaque photographe
         const picture = `assets/photographers/${this.portrait}`;
         const img = document.createElement('img');
         img.setAttribute("src", picture);
+        img.setAttribute("alt", "Photo de " + this.name)
         const h2 = document.createElement('h2');
         h2.textContent = this.name;
         const h3 = document.createElement('h3');
@@ -33,11 +42,11 @@ class Photographer {
         h4.textContent = this.tagline;
         const p = document.createElement('p');
         p.textContent = this.price + '€/jour';
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(h3);
-        article.appendChild(h4);
-        article.appendChild(p);
+        linkPhotographer.appendChild(img);
+        linkPhotographer.appendChild(h2);
+        linkPhotographer.appendChild(h3);
+        linkPhotographer.appendChild(h4);
+        linkPhotographer.appendChild(p);
         return article;
     }
 }

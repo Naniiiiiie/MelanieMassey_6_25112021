@@ -22,11 +22,21 @@ class Videos {
 
         // Création élément video
         const video = document.createElement('video');
+        video.setAttribute("controls", "")
         const sourceVideo = document.createElement('source');
         sourceVideo.setAttribute("src",videoFile);
         sourceVideo.setAttribute("type","video/mp4");
+        
         linkMedia.appendChild(video);
         video.appendChild(sourceVideo);
+
+        const p = document.createElement('p');
+        p.textContent = "Votre navigateur ne supporte pas les videos html 5.";
+        const a = document.createElement('a');
+        a.setAttribute("href", `assets/photographers/${this.video}`);
+        p.appendChild(a);
+        video.appendChild(p);
+        
         
         // Création d'un div enfant de l'élément article pour insérer le titre & likes du média
         const mediaDiv = document.createElement('div');
@@ -63,8 +73,9 @@ class Videos {
     getMediaLightboxDOM() {
         const mediaLightboxDiv = document.createElement('div')
         mediaLightboxDiv.id = "lightbox_media"
-        mediaLightboxDiv.innerHTML = `<video>
+        mediaLightboxDiv.innerHTML = `<video controls>
                     <source src="assets/photographers/${this.video}" type="video/mp4" alt="${this.title}">
+                    <p>Votre navigateur ne supporte pas les videos html 5. <a href="assets/photographers/${this.video}">Cliquez ici</a></p>
                 </video>
                 <h3>${this.title}</h3>`
         return mediaLightboxDiv

@@ -9,16 +9,18 @@ async function getPhotographers() {
 async function displayData(photographers) {
     // Constante qui associe la partie .photographer_section de index.html
     const photographersSection = document.querySelector(".photographer_section");
+    // Je créé une variable i pour me permettre 
     i = 0;
 
     photographers.forEach((photographer) => {
         // Je passe un deuxième paramètre i
-        const photographerModel = new Photographer(photographer,i); 
+        const photographerModel = new Photographer(photographer, i); 
 
         // Mise en forme de chaque photographe dans la page
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
         i++;
+        //console.log(photographers)
     });
 };
 

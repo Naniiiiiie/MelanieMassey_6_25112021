@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -11,30 +11,30 @@
   <body>
     <!--HEADER-->
     <header>
-      <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
+      <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Logo du site web Fisheye"/></a>
     </header>
 
     <!--MAIN CONTENT-->
     <main id="main">
       <div class="photograph-header">
-        <button id="contact_button">Contactez-moi</button>
+        <button id="contact_button" aria-label="Bouton de contact" role="Ouvrir le formulaire de contact">Contactez-moi</button>
       </div>
       <section class="photograph-medias">
-        <div id="filter_container">
+        <div id="filter_container" aria-label="Filtrage des médias">
           <p>Trier par</p>
-          <div id="filter_elements">
-            <i class="fas fa-chevron-up" id="up"></i>
-            <i class="fas fa-chevron-down" id="down"></i>
-            <p id="filter_pop">Popularité</p>
-            <p class="filter_element" id="filter_date">Date</p>
-            <p class="filter_element" id="filter_titre">Titre</p>
-          </div>
+          <nav id="filter_elements">
+            <i class="fas fa-chevron-up" id="up" role="Cacher la sélection des filtres" tabindex="1"></i>
+            <i class="fas fa-chevron-down" id="down" role="dérouler la sélection des filtres"></i>
+            <p id="filter_pop" role="Filtrer par popularité">Popularité</p>
+            <p class="filter_element" id="filter_date" role="Filtrer les médias du plus récent au plus ancien">Date</p>
+            <p class="filter_element" id="filter_titre" role="Filtrer les titres de façon alphabétique">Titre</p>
+          </nav>
         </div>
         <div class="medias-display">
           
         </div>
       </section>
-      <aside id="tag_LikesPrice">
+      <aside id="tag_LikesPrice" aria-label="Nombre total des likes de tous les médias du photographe">
       </aside>
     </main>
 
@@ -47,16 +47,16 @@
         </header>
 				<form id="modal_form">
 					<div>
-						<label>Prénom</label>
-						<input type="text"/>
-            <label>Nom</label>
-						<input type="text"/>
-            <label>Email</label>
-						<input type="email"/>
-            <label>Votre message</label>
-						<input id="input_message" type="text"/>
+						<label for="prénom">Prénom</label>
+						<input type="text" name="prénom" id="prénom"/>
+            <label for="nom">Nom</label>
+						<input type="text" name="nom" id="nom"/>
+            <label for="email">Email</label>
+						<input type="email" name="email" id="email"/>
+            <label for="message">Votre message</label>
+						<input type="text" name="message" id="message"/>
 					</div>
-          <button id="contact_button">Envoyer</button>
+          <button type="submit" id="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>

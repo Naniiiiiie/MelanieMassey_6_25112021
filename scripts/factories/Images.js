@@ -23,6 +23,7 @@ class Images {
         // Création élément image
         const img = document.createElement('img');
         img.setAttribute("src", picture);
+        img.setAttribute("alt", this.title);
         linkMedia.appendChild(img);
 
         // Création d'un div enfant de l'élément article pour insérer le titre & likes du média
