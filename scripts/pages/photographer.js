@@ -3,11 +3,12 @@ async function getPhotographer(index) {
     const resultat = await fetch ("data/photographers.json")
     const photographers = await resultat.json()
     const photographer = photographers.photographers[index]
-    console.log(photographer)
     return photographer
 }
 
-// Création de l'encard donnée du photographe .photograph-header
+const photographerId = new URLSearchParams(window.location.search).get("index");
+
+// Création de l'encart donnée du photographe .photograph-header
 async function init(photographerId){
     const photographer = await getPhotographer(photographerId);
     const medias = await getMedias(photographer);
@@ -47,7 +48,7 @@ async function init(photographerId){
     tagLikesPrice.appendChild(pPrice);   
 }
 
-const photographerId = new URLSearchParams(window.location.search).get("index");
+
 
 init(photographerId);
 

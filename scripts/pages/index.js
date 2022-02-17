@@ -1,4 +1,4 @@
-// Récupération des données photographeurs et le rendre exploitable
+// Récupération des données photographeurs et les rendre exploitable
 async function getPhotographers() {
     const resultat = await fetch ("data/photographers.json")
     const photographers = await resultat.json()
@@ -9,7 +9,7 @@ async function getPhotographers() {
 async function displayData(photographers) {
     // Constante qui associe la partie .photographer_section de index.html
     const photographersSection = document.querySelector(".photographer_section");
-    // Je créé une variable i pour me permettre 
+    // Je créé une variable i pour me permettre de construire les liens URL menant à chaque photographe 
     i = 0;
 
     photographers.forEach((photographer) => {

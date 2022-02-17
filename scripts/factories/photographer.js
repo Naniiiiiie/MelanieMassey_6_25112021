@@ -11,16 +11,14 @@ class Photographer {
         this.index = index
     }
 
-    // Fonction qui va créer le profil de chaque photographe
+    // Méthode qui construit le HTML du profil de chaque photographe
     getUserCardDOM() {
         // Création d'un nouvel élément article dans la page
         const article = document.createElement('article');
         
         // Création du lien de la future vignette (article) d'un photographe
         const linkPhotographer = document.createElement('a');
-        console.log(linkPhotographer);
         const urlPhotographer = `photographer.html?index=${this.index}`;
-        console.log(urlPhotographer);
         linkPhotographer.setAttribute("href", urlPhotographer);
         article.appendChild(linkPhotographer);
         

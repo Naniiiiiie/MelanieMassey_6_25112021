@@ -1,17 +1,20 @@
 class Lightbox {
+    // Je passe alreadyListened en static pour pouvoir l'utiliser ensuite et résoudre le bug navigation clavier Lightbox
     static alreadyListened = false;
+    
     static init(medias) {
-
         // Constante qui regroupe tous les liens de chaque média
         const links = document.querySelectorAll(".mediaLink");
         // Pour chaque media cliqué, j'annule le lien existant et créé une lightbox associée au media
         links.forEach(link => {
+            // Remove listener pour éviter un bug à fermeture et réouverture de la lightbox
             link.removeEventListener('click', e => {
                 // stop comportement par défaut du lien
                 e.preventDefault()
                 // Affiche une Lightbox
                 new Lightbox(medias[e.currentTarget.dataset.index], medias)
             })
+            // Event Listener qui ouvre la lightbox sur le media cliqué
             link.addEventListener('click', e => {
                 // stop comportement par défaut du lien
                 e.preventDefault()
@@ -26,7 +29,6 @@ class Lightbox {
         this.index = media.index
         const lightboxElement = this.buildDOM(media)
         document.body.appendChild(lightboxElement)
-
     }
 
     // Construit la lightbox
@@ -82,7 +84,6 @@ class Lightbox {
         const lightboxElement = this.buildDOM(this.medias[this.index])
         document.getElementById('lightbox_container').remove()
         document.body.appendChild(lightboxElement)
-        console.log(this.index)
     }
 
     prev() {
@@ -90,7 +91,6 @@ class Lightbox {
         const lightboxElement = this.buildDOM(this.medias[this.index])
         document.getElementById('lightbox_container').remove()
         document.body.appendChild(lightboxElement)
-        console.log(this.index)
     }
 
     onKeyUp(e, dom) {
