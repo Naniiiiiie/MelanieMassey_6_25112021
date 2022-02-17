@@ -23,11 +23,11 @@
         <div id="filter_container" aria-label="Filtrage des médias">
           <p>Trier par</p>
           <nav id="filter_elements">
-            <i class="fas fa-chevron-up" id="up" role="Cacher la sélection des filtres" tabindex="1"></i>
-            <i class="fas fa-chevron-down" id="down" role="dérouler la sélection des filtres"></i>
-            <p id="filter_pop" role="Filtrer par popularité">Popularité</p>
-            <p class="filter_element" id="filter_date" role="Filtrer les médias du plus récent au plus ancien">Date</p>
-            <p class="filter_element" id="filter_titre" role="Filtrer les titres de façon alphabétique">Titre</p>
+            <i class="fas fa-chevron-up" id="up" tabindex="0" role="Cacher la sélection des filtres" tabindex="1"></i>
+            <i class="fas fa-chevron-down" id="down" tabindex="0"    role="dérouler la sélection des filtres"></i>
+            <button class="filter_element" id="filter_pop" role="Filtrer par popularité">Popularité</button>
+            <button class="filter_element" id="filter_date" role="Filtrer les médias du plus récent au plus ancien">Date</button>
+            <button class="filter_element" id="filter_titre"          role="Filtrer les titres de façon alphabétique">Titre</button>
           </nav>
         </div>
         <div class="medias-display">
@@ -43,7 +43,7 @@
 			<div id="modal">
 				<header id="modal_header">
           <h2 id="modal_title">Contactez-moi</h2>
-          <img id="close_button" src="assets/icons/close.svg" />
+          <img id="close_button" src="assets/icons/close.svg" alt="Icone croix pour fermer le formulaire de contact"/>
         </header>
 				<form id="modal_form">
 					<div>

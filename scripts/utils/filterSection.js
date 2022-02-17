@@ -25,3 +25,15 @@ function hideFilters() {
 iconChevron.addEventListener("click", displayFilters);
 iconChevronUp.addEventListener("click", hideFilters);
 
+// Ecoute de l'évènement clavier pour développer et fermer les filtres
+iconChevron.addEventListener("keyup", (e) => {
+    if(e.key === 'Enter') {
+        displayFilters(e);
+    }
+});
+iconChevronUp.addEventListener("keyup", (e) => {
+    if(e.key === 'Enter') {
+        hideFilters(e);
+    }
+});
+

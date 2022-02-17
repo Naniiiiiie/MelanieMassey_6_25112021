@@ -11,6 +11,7 @@ const photographerId = new URLSearchParams(window.location.search).get("index");
 // Création de l'encart donnée du photographe .photograph-header
 async function init(photographerId){
     const photographer = await getPhotographer(photographerId);
+    // Appelle la fonction getMedias pour afficher les medias
     const medias = await getMedias(photographer);
         
     /**insérer infos photographe**/
@@ -110,8 +111,10 @@ async function getMedias(photographer) {
     spanLikes.appendChild(icon);
 
     // Filtrage des Medias
-    const filters = document.querySelectorAll("#filter_elements p");
+    const filters = document.querySelectorAll("#filter_elements button");
+    
     filters.forEach(filter => {
+        // Au click
         filter.addEventListener("click", e => {
             switch(e.target.id) {
                 case "filter_pop":
@@ -142,12 +145,46 @@ async function getMedias(photographer) {
                 const mediaCardDOM = photographerMedia.getMediaCardDOM();
                 photographerMediasSection.appendChild(mediaCardDOM);
                 i++
-                console.log(photographerMedias);
+            })
+            Lightbox.init(photographerMedias);
+        })
+        // Au clavier
+        filter.addEventListener("keyup", e => {
+            if(e.key === 'Enter') {
+                switch(e.target.id) {
+                    case "filter_pop":
+                        photographerMedias.sort(function (a, b) {
+                            return b.likes - a.likes;
+                        })
+                    break
+
+                    case "filter_titre":
+                        photographerMedias.sort(function (a, b) {
+                            return a.title.localeCompare(b.title);
+                        })
+                        //users.sort((a, b) => a.firstname.localeCompare(b.firstname))
+                    break
+
+                    case "filter_date":
+                        photographerMedias.sort(function (a, b) {
+                            return new Date(b.date) - new Date(a.date);
+                        })
+                    break
+                }
+            }
+            
+            photographerMediasSection.innerHTML = "";
+            let i = 0;
+            photographerMedias.forEach(media => {
+                media.index = i;
+                const photographerMedia = new MediasFactory(media);
+                const mediaCardDOM = photographerMedia.getMediaCardDOM();
+                photographerMediasSection.appendChild(mediaCardDOM);
+                i++
             })
             Lightbox.init(photographerMedias);
         })
     })
-
 }
 
 

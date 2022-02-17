@@ -34,5 +34,17 @@ function submitRequest() {
     console.log("Prénom : " + prenomInput);
     console.log("Nom : " + nomInput);
     console.log("email : " + emailInput);
-    console.log("Message : " + messageInput);
+    console.log("Message : " +messageInput);
+}
+
+// Navigation modal avec le Keyboard
+window.addEventListener('keyup', (e) => {
+    onKeyUp(e)
+})
+
+function onKeyUp(e) {
+    console.log(modalContainer.style.display)
+    if (modalContainer.style.display = "block" && e.key === 'Escape') {
+        closeModal()
+    }
 }

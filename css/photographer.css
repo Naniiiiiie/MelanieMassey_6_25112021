@@ -81,6 +81,7 @@ h2 {
     background-color:#901C1C;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin-left: 2rem;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -102,14 +103,17 @@ h2 {
     right: 1.4rem;
 }
 
-#filter_elements p {
-    padding-left: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+#filter_elements button {
+    padding: 1rem;
     margin: 0;
+    background-color: #901C1C;
+    border: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
 }
 
-#filter_elements p:nth-child(0n+4) {
+#filter_elements button:nth-child(0n+4) {
     border-top: 2px solid #ffffff;
     border-bottom: 2px solid #ffffff;
 }

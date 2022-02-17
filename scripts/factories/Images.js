@@ -43,11 +43,19 @@ class Images {
         span.textContent = this.likes;
         const icon = document.createElement('i');
         icon.className = 'fas fa-heart';// code icone
+        icon.setAttribute("tabindex", 0);
         likesDiv.appendChild(span);
         likesDiv.appendChild(icon);
 
         // Incrémentation du like dans la fiche Media mais aussi dans le total des likes
+        // Au click
         icon.addEventListener("click", addOneLike);
+        // Au clavier
+        icon.addEventListener("keyup", (e) => {
+            if(e.key === "Enter") {
+                addOneLike();
+            }
+        });
         function addOneLike() {
             let totalLikes = document.getElementById("totalLikes").innerHTML++;
             console.log(totalLikes);

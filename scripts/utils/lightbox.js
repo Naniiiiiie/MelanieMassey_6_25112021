@@ -65,7 +65,6 @@ class Lightbox {
         // Navigation Lightbox avec le Keyboard
         window.removeEventListener('keyup', (e) => {
             this.onKeyUp(e, dom)
-            
         })
 
         if (!Lightbox.alreadyListened) {
