@@ -2,9 +2,11 @@
 .photograph-header {
     background-color: #FAFAFA;
     height: auto;
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; */
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
     padding: 40px;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -40,6 +42,12 @@ h2 {
     height: 200px;
     object-fit: cover;
     border-radius: 50%;
+    justify-self: end;
+}
+
+#contact_button{
+    align-self: center;
+    justify-self: center;
 }
 
 #contact_button,
