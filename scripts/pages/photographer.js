@@ -12,7 +12,7 @@ const photographerId = new URLSearchParams(window.location.search).get("index");
 async function init(photographerId){
     const photographer = await getPhotographer(photographerId);
     // Appelle la fonction getMedias pour afficher les medias
-    const medias = await getMedias(photographer);
+    await getMedias(photographer);
         
     /**insérer infos photographe**/
     //Création d'un <div> avant <button> de contact pour Nom, City, Tagline

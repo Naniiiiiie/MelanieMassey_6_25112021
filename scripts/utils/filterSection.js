@@ -1,5 +1,4 @@
 // Définition des constantes
-const filterContainer = document.getElementById("filter_container");
 const filterDate = document.getElementById("filter_date");
 const filterTitre = document.getElementById("filter_titre");
 const iconChevron = document.querySelector(".fa-chevron-down");

@@ -10,7 +10,7 @@ async function displayData(photographers) {
     // Constante qui associe la partie .photographer_section de index.html
     const photographersSection = document.querySelector(".photographer_section");
     // Je créé une variable i pour me permettre de construire les liens URL menant à chaque photographe 
-    i = 0;
+    let i = 0;
 
     photographers.forEach((photographer) => {
         // Je passe un deuxième paramètre i
@@ -22,13 +22,13 @@ async function displayData(photographers) {
         i++;
         //console.log(photographers)
     });
-};
+}
 
 async function init() {
     // Récupère les datas des photographes
-    const { photographers } = await getPhotographers();
-    displayData(photographers);
-};
+    const photographers = await getPhotographers();
+    displayData(photographers.photographers);
+}
 
 init();
     

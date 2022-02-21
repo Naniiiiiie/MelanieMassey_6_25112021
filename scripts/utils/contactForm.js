@@ -1,10 +1,9 @@
 // DOM Elements
 const modalContainer = document.getElementById("contact_modal");
-const modal = document.getElementById("modal");
 const contactButton = document.getElementById("contact_button");
 const closeButton = document.getElementById("close_button");
-const modalForm = document.getElementById("modal_form");
 const submitButton = document.getElementById("submit_button");
+let prenom = document.getElementById("prenom");
 
 // Eventlisteners to display and close the modal
 contactButton.addEventListener("click", displayModal);
@@ -13,6 +12,7 @@ closeButton.addEventListener("click", closeModal);
 // Functions to display and close the modal
 function displayModal() {
 	modalContainer.style.display = "block";
+    prenom.focus();
 }
 function closeModal() {
     modalContainer.style.display = "none";
@@ -41,7 +41,6 @@ function submitRequest() {
 window.addEventListener('keyup', (e) => {
     onKeyUp(e)
 })
-
 function onKeyUp(e) {
     console.log(modalContainer.style.display)
     if (modalContainer.style.display = "block" && e.key === 'Escape') {
