@@ -1,16 +1,23 @@
 // Récupération des données des photographes du json et conversion pour les rendre exploitables
-async function getPhotographer(index) {
+async function getPhotographer() {
     const resultat = await fetch ("data/photographers.json")
     const photographers = await resultat.json()
-    const photographer = photographers.photographers[index]
-    return photographer
+    //console.log(photographers);
+    const photographer = photographers.photographers.filter(function(photographer){
+        if(photographer.id == photographerId){
+            return photographer
+        }
+    })
+    
+    return photographer[0]
 }
 
 const photographerId = new URLSearchParams(window.location.search).get("index");
 
 // Création de l'encart donnée du photographe .photograph-header
-async function init(photographerId){
-    const photographer = await getPhotographer(photographerId);
+async function init(){
+    const photographer = await getPhotographer();
+    console.log(photographer)
     // Appelle la fonction getMedias pour afficher les medias
     await getMedias(photographer);
         
@@ -51,7 +58,7 @@ async function init(photographerId){
 
 
 
-init(photographerId);
+init();
 
 // Récupération des données médias du json et conversion pour les rendre exploitables
 async function getMedias(photographer) {

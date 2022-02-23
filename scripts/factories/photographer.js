@@ -1,6 +1,6 @@
 class Photographer {
     // Mise en place du constructor
-    constructor(data,index) {
+    constructor(data) {
         this.name = data.name
         this.id = data.id
         this.city = data.city
@@ -8,7 +8,6 @@ class Photographer {
         this.tagline = data.tagline
         this.price = data.price
         this.portrait = data.portrait
-        this.index = index
     }
 
     // Méthode qui construit le HTML du profil de chaque photographe
@@ -18,7 +17,7 @@ class Photographer {
         
         // Création du lien de la future vignette (article) d'un photographe
         const linkPhotographer = document.createElement('a');
-        const urlPhotographer = `photographer.html?index=${this.index}`;
+        const urlPhotographer = `photographer.html?index=${this.id}`;
         linkPhotographer.setAttribute("href", urlPhotographer);
         article.appendChild(linkPhotographer);
         
