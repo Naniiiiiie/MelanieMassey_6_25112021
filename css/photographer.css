@@ -171,6 +171,7 @@ article a {
 
 .fa-heart {
     color: #901C1C;
+    cursor: pointer;
 }
 
 .likesDiv span {

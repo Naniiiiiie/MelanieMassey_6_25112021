@@ -11,42 +11,42 @@
   <body>
     <!--HEADER-->
     <header>
-      <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Logo du site web Fisheye"/></a>
+      <a href="index.html" aria-label="Page d'accueil fisheye"><img src="assets/images/logo.png" class="logo" alt="Logo du site web Fisheye"/></a>
     </header>
 
     <!--MAIN CONTENT-->
     <main id="main">
       <div class="photograph-header">
-        <button id="contact_button" aria-label="Bouton de contact" role="Ouvrir le formulaire de contact">Contactez-moi</button>
+        <button id="contact_button" aria-label="contact">Contactez-moi</button>
       </div>
       <section class="photograph-medias">
         <div id="filter_container" aria-label="Filtrage des médias">
           <p>Trier par</p>
           <nav id="filter_elements">
-            <i class="fas fa-chevron-up" id="up" tabindex="0"  aria-label="Fermer les filtres" role="Cacher la sélection des filtres" tabindex="1"></i>
-            <i class="fas fa-chevron-down" id="down" tabindex="0" aria-label="Ouvrir les filtres" role="dérouler la sélection des filtres"></i>
-            <button class="filter_element" id="filter_pop" role="Filtrer par popularité">Popularité</button>
-            <button class="filter_element" id="filter_date" role="Filtrer les médias du plus récent au plus ancien">Date</button>
-            <button class="filter_element" id="filter_titre" role="Filtrer les titres de façon alphabétique">Titre</button>
+            <i class="fas fa-chevron-up" id="up" tabindex="0"  aria-label="Fermer les filtres" role="button" aria-expanded="true" aria-controls="filtres" tabindex="1"></i>
+            <i class="fas fa-chevron-down" id="down" tabindex="0" aria-label="Ouvrir les filtres" role="button"  aria-expanded="false" aria-controls="filtres" ></i>
+            <button class="filter_element" id="filter_pop">Popularité</button>
+            <button class="filter_element" id="filter_date">Date</button>
+            <button class="filter_element" id="filter_titre">Titre</button>
           </nav>
         </div>
-        <div class="medias-display">
+        <div class="medias-display" aria-label="Portfolio du photographe">
           
         </div>
       </section>
-      <aside id="tag_LikesPrice" aria-label="Nombre total des likes de tous les médias du photographe">
+      <aside id="tag_LikesPrice" aria-label="Nombre total des likes obtenus par le photographe">
       </aside>
     </main>
 
     <!--MODAL-->
-    <div id="contact_modal">
+    <div id="contact_modal" aria-label="Formulaire de contact">
 			<div id="modal">
 				<header id="modal_header">
           <h2 id="modal_title">Contactez-moi</h2>
-          <img id="close_button" src="assets/icons/close.svg" alt="Icone croix pour fermer le formulaire de contact"/>
+          <img id="close_button" src="assets/icons/close.svg" aria-hidden="true" alt="Icone fermeture du formulaire de contact"/>
         </header>
 				<form id="modal_form">
-					<div>
+					<div aria-label="Entrées du formaulaire à compléter">
 						<label for="prenom">Prénom</label>
 						<input type="text" name="prenom" id="prenom"/>
             <label for="nom">Nom</label>

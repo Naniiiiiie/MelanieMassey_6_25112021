@@ -44,6 +44,8 @@ class Images {
         const icon = document.createElement('i');
         icon.className = 'fas fa-heart';// code icone
         icon.setAttribute("tabindex", 0);
+        icon.setAttribute("title", "Like icon");
+        icon.setAttribute("role","button");
         likesDiv.appendChild(span);
         likesDiv.appendChild(icon);
 
