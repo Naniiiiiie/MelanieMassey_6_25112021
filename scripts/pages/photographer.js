@@ -2,12 +2,13 @@
 async function getPhotographer() {
     const resultat = await fetch ("data/photographers.json")
     const photographers = await resultat.json()
-    //console.log(photographers);
+    console.log(photographers);
     const photographer = photographers.photographers.filter(function(photographer){
         if(photographer.id == photographerId){
             return photographer
         }
     })
+    
     
     return photographer[0]
 }
@@ -64,7 +65,14 @@ init();
 async function getMedias(photographer) {
     const resultatMedias = await fetch ("data/photographers.json")
     let medias = await resultatMedias.json()
-    medias = medias.media
+    medias = medias.media.filter((media) => {
+        if(media.photographerId == photographerId) {
+            return medias
+        }
+    })
+    
+    console.log(photographerId)
+    console.log(medias)
 
     // Tableau qui va répertorier les likes de chaque medias d'un photographe
     let likesArray = []
@@ -74,30 +82,44 @@ async function getMedias(photographer) {
     
     const photographerMediasSection = document.querySelector(".medias-display");
 
-    // Balayge de chaque media du tableau à la recherche des medias souhaités
-    let i = 0;
-    medias.forEach(media => {
-        // Si le photographerId de chaque media = à l'Id du photographe
-        if (media.photographerId == photographer.id) {
-            // Alors on affiche le media sur la page dans la section .photograph-medias
-            
-            media.index = i;
-            // Récupération de chaque media en le faisant passer dans la MediasFactory
-            // La Factory va définir s'il s'agit d'une image ou vidéo
-            const photographerMedia = new MediasFactory(media);
-            
-            // Mise en forme de chaque média dans le DOM
-            const mediaCardDOM = photographerMedia.getMediaCardDOM();
-            photographerMediasSection.appendChild(mediaCardDOM);
-            
-            // Ajoute nb likes de chaque media dans tableau likesArray
-            likesArray.push(media.likes);
+    medias.forEach((media) => {
+        // Récupération de chaque media en le faisant passer dans la MediasFactory
+        // La Factory va définir s'il s'agit d'une image ou vidéo
+        const photographerMedia = new MediasFactory(media);
+        
+        // Mise en forme de chaque média dans le DOM
+        const mediaCardDOM = photographerMedia.getMediaCardDOM();
+        photographerMediasSection.appendChild(mediaCardDOM);
+        
+        // Ajoute nb likes de chaque media dans tableau likesArray
+        likesArray.push(media.likes);
+    })
 
-            // Ajoute chaque media dans le tableau photographerMedias
-            photographerMedias.push(media);
-            i++
-        } 
-    });
+    /*----------VERSION AVEC INDEX DEFINI AU PREALABLE----------*/
+    // // Balayge de chaque media du tableau à la recherche des medias souhaités
+    // let i = 0;
+    // medias.forEach(media => {
+    //     // Si le photographerId de chaque media = à l'Id du photographe
+    //     if (media.photographerId == photographer.id) {
+    //         // Alors on affiche le media sur la page dans la section .photograph-medias
+            
+    //         media.index = i;
+    //         // Récupération de chaque media en le faisant passer dans la MediasFactory
+    //         // La Factory va définir s'il s'agit d'une image ou vidéo
+    //         const photographerMedia = new MediasFactory(media);
+            
+    //         // Mise en forme de chaque média dans le DOM
+    //         const mediaCardDOM = photographerMedia.getMediaCardDOM();
+    //         photographerMediasSection.appendChild(mediaCardDOM);
+            
+    //         // Ajoute nb likes de chaque media dans tableau likesArray
+    //         likesArray.push(media.likes);
+
+    //         // Ajoute chaque media dans le tableau photographerMedias
+    //         photographerMedias.push(media);
+    //         i++
+    //     } 
+    // });
     
     Lightbox.init(photographerMedias);
 
@@ -120,25 +142,27 @@ async function getMedias(photographer) {
     // Filtrage des Medias
     const filters = document.querySelectorAll("#filter_elements button");
     
+    console.log(medias);
+
     filters.forEach(filter => {
         // Au click
         filter.addEventListener("click", e => {
             switch(e.target.id) {
                 case "filter_pop":
-                    photographerMedias.sort(function (a, b) {
+                    medias.sort(function (a, b) {
                         return b.likes - a.likes;
                     })
                 break
 
                 case "filter_titre":
-                    photographerMedias.sort(function (a, b) {
+                    medias.sort(function (a, b) {
                         return a.title.localeCompare(b.title);
                     })
                     //users.sort((a, b) => a.firstname.localeCompare(b.firstname))
                 break
 
                 case "filter_date":
-                    photographerMedias.sort(function (a, b) {
+                    medias.sort(function (a, b) {
                         return new Date(b.date) - new Date(a.date);
                     })
                 break
@@ -146,7 +170,7 @@ async function getMedias(photographer) {
             
             photographerMediasSection.innerHTML = "";
             let i = 0;
-            photographerMedias.forEach(media => {
+            medias.forEach(media => {
                 media.index = i;
                 const photographerMedia = new MediasFactory(media);
                 const mediaCardDOM = photographerMedia.getMediaCardDOM();
@@ -160,20 +184,20 @@ async function getMedias(photographer) {
             if(e.key === 'Enter') {
                 switch(e.target.id) {
                     case "filter_pop":
-                        photographerMedias.sort(function (a, b) {
+                        medias.sort(function (a, b) {
                             return b.likes - a.likes;
                         })
                     break
 
                     case "filter_titre":
-                        photographerMedias.sort(function (a, b) {
+                        medias.sort(function (a, b) {
                             return a.title.localeCompare(b.title);
                         })
                         //users.sort((a, b) => a.firstname.localeCompare(b.firstname))
                     break
 
                     case "filter_date":
-                        photographerMedias.sort(function (a, b) {
+                        medias.sort(function (a, b) {
                             return new Date(b.date) - new Date(a.date);
                         })
                     break
@@ -182,7 +206,7 @@ async function getMedias(photographer) {
             
             photographerMediasSection.innerHTML = "";
             let i = 0;
-            photographerMedias.forEach(media => {
+            medias.forEach(media => {
                 media.index = i;
                 const photographerMedia = new MediasFactory(media);
                 const mediaCardDOM = photographerMedia.getMediaCardDOM();
