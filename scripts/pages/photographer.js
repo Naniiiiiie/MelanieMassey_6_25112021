@@ -82,7 +82,9 @@ async function getMedias(photographer) {
     
     const photographerMediasSection = document.querySelector(".medias-display");
 
+    let i = 0;
     medias.forEach((media) => {
+        media.index = i;
         // Récupération de chaque media en le faisant passer dans la MediasFactory
         // La Factory va définir s'il s'agit d'une image ou vidéo
         const photographerMedia = new MediasFactory(media);
@@ -121,7 +123,7 @@ async function getMedias(photographer) {
     //     } 
     // });
     
-    Lightbox.init(photographerMedias);
+    Lightbox.init(medias);
 
     // TOTAL LIKES => Fonction pour additionner valeurs des Likes du tableau likesArray
     const addition = (previousValue, currentValue) => previousValue + currentValue;
@@ -177,7 +179,7 @@ async function getMedias(photographer) {
                 photographerMediasSection.appendChild(mediaCardDOM);
                 i++
             })
-            Lightbox.init(photographerMedias);
+            Lightbox.init(medias);
         })
         // Au clavier
         filter.addEventListener("keyup", e => {
