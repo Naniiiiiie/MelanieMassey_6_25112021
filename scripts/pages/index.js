@@ -1,6 +1,6 @@
 // Récupération des données photographeurs et les rendre exploitable
 async function getPhotographers() {
-    const resultat = await fetch ("data/photographers.json")
+    const resultat = await fetch ("./data/photographers.json")
     const photographers = await resultat.json()
     return photographers
 }
